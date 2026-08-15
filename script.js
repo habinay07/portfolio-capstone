@@ -6,6 +6,7 @@ const logoutButton = document.querySelector("#logoutButton");
 const themeToggle = document.querySelector(".theme-toggle");
 const menuToggle = document.querySelector(".menu-toggle");
 const navLinks = document.querySelector(".nav-links");
+const pageLoader = document.querySelector(".page-loader");
 
 const storageKey = "portfolioContactResponses";
 const themeKey = "portfolioTheme";
@@ -158,3 +159,12 @@ navLinks.addEventListener("click", (event) => {
 });
 
 applyTheme(localStorage.getItem(themeKey) || "light");
+
+document.body.classList.add("is-loading");
+
+window.addEventListener("load", () => {
+  setTimeout(() => {
+    pageLoader.classList.add("hidden");
+    document.body.classList.remove("is-loading");
+  }, 700);
+});
